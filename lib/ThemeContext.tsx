@@ -33,14 +33,9 @@ export const AppThemeProvider: React.FC = ({ children }) => {
     <ThemeContext.Provider value={{ themeChoice, changeTheme }}>
       <ThemeProvider theme={theme}>
         <Box  sx={{
-          margin: 0,
-          padding: 0,
-          width:"100vw",
-          height:"100vh",
           backgroundColor:theme.palette.background.default,
           backgroundSize: 'cover',
           backgroundBlendMode: 'multiply',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
         }}>
           {children}
         </Box>

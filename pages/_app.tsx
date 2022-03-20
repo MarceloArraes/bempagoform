@@ -5,7 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AppThemeProvider>
-          <GlobalStyle />
+        <GlobalStyle />
         <CssBaseline />
       <Component {...pageProps} />
     </AppThemeProvider>
