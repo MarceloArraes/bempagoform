@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import React, { Children, createContext, useCallback, useContext, useMemo, useState } from 'react';
-import Head from 'next/head'
 //import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { useAppThemeContext } from '../lib/ThemeContext';
@@ -14,7 +13,6 @@ interface ITitulo {
   children: string;
   tag: string;
 }
-
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -30,25 +28,22 @@ const Home: NextPage = () => {
       <Box sx={{
         display: 'flex',
         flexDirection: 'column',
-        flex:2,
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100vh',
-        width: '100vw',
+        flex:1,
+        alignItems: 'left',
+        //justifyContent: 'center',
+        boxShadow: '0 2px 10px 0 rgb(0 0 0 / 20%)',
+        borderRadius: '5px',
+        maxWidth: '100%',
+        height: '100%',
       }}>
-        <Head>
-          <title>Bem Paggo</title>
-          <meta name="description" content="Desafio de Front End" />
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-        <Box>
+        <Header />
         <Titulo>TITULO</Titulo>
-        </Box>
+
         <Button color="secondary" variant="contained" onClick={changeTheme}>Change Themes</Button>
         <Button variant="contained" onClick={handleClick}>Go to CheckOut</Button>
-        <main className={styles.main}>
+        <main >
           
-          <h1 className={styles.title}>
+          <h1 >
             Teste
           </h1>
           </main>
@@ -58,22 +53,14 @@ const Home: NextPage = () => {
 
 function Titulo(props: { children: string}) {
 
-/*   .hero {
-    display: block;
-    box-sizing: border-box;
-    height: 500px;
-    background-color: #dc3d4b;
-    clip-path: ellipse(126% 100% at 6.68% 0%);
-    } */
-
   const CustomizedTitleBox = styled(Box)`
-    display: block;
-    box-sizing: border-box;
-    height: 125%;
-    
-    background-color: #dc3d4b;
-    clip-path: ellipse(126% 100% at 6.68% 0%);
-    color: #20b2aa;
+    display: flex;
+
+    height: 30%;
+    width: 100%;
+    background-color: #2e3676;
+    clip-path: ellipse(72% 100% at 37.46% 0%);
+    color: #FFFFFF;
 
   :hover {
     color: #2e8b57;
@@ -88,14 +75,32 @@ const StyledBox: React.FC = ({ children }) => {
   <>  <StyledBox>
       <Typography variant="h6" gutterBottom component="div">
        Formulário <br/>para compra de<br/> 
-      </Typography>
-
+      
        <Typography variant="h6" fontWeight='bold' gutterBottom component="div">
        Pacote de adesivos<br/>
+      </Typography>
       </Typography>
       </StyledBox>
 
   </>
+  )
+}
+
+function Header() {
+  return (
+      <>
+          <Box sx={{ width: '100%', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} >
+              <Typography variant='body2'>
+                  Metrics
+              </Typography>
+              <Button
+                  variant='outlined'
+                  label='Logout'
+                  href="/"
+              >Logout
+              </Button>
+          </Box>
+      </>
   )
 }
 
