@@ -3,14 +3,13 @@ import React, { Children, createContext, useCallback, useContext, useMemo, useSt
 //import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { useAppThemeContext } from '../lib/ThemeContext';
-import { Button } from '@mui/material';
+import { Button, TextField } from '@mui/material';
 import { useRouter } from 'next/router'
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/system/Box';
-import Avatar from '@mui/material/Avatar';
-import { borderRadius } from '@mui/system';
 import CheckboxLanguages from '../lib/components/CheckBoxLanguages';
+import GroupButtonQuantities from '../lib/components/GroupButtonQuantities';
 
 interface ITitulo {
   children: string;
@@ -45,7 +44,7 @@ const Home: NextPage = () => {
         //display: 'flex',
         flexDirection: 'column',
         //flex:1,
-        //alignItems: 'left',
+        alignItems: 'center',
         //justifyContent: 'center',
         boxShadow: '0 2px 10px 0 rgb(0 0 0 / 20%)',
         borderRadius: '7px',
@@ -60,10 +59,28 @@ const Home: NextPage = () => {
       }}>
         
          <Titulo/> 
+         {/* Here i will make the checkBoxes*/}
         <CheckboxLanguages/>
-        {/* Here i will make the checkBoxes*/}
         {/* Here i will ask how many stickers*/}
+        <GroupButtonQuantities/>
+        
+        
         {/* Then a textField for observations*/}
+        <Box sx={{
+          alignItems: 'left',
+          justifyContent: 'center',
+          display: 'flex',
+          flexDirection: 'column',
+          marginTop: '2rem',
+          marginBottom: '2rem',
+          marginLeft: '2rem',
+          marginRight: '2rem',
+        }}>
+        <Typography>Observações</Typography>
+        <TextField sx={{
+          backgroundColor: 'secondary.light',
+        }} multiline rows={4} variant="outlined" />
+        </Box>
         {/* change themes on the bottom.*/}
 
         <Button color="primary" onClick={changeTheme}>Change Themes</Button>
