@@ -8,6 +8,9 @@ import { useRouter } from 'next/router'
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/system/Box';
+import Avatar from '@mui/material/Avatar';
+import { borderRadius } from '@mui/system';
+import CheckboxLanguages from '../lib/components/CheckBoxLanguages';
 
 interface ITitulo {
   children: string;
@@ -25,33 +28,53 @@ const Home: NextPage = () => {
 
 
   return (
+    <Box
+    sx={{
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'center',
+      height: '100vh',
+      width: '100vw',
+      //backgroundColor: appConfig.theme.colors.primary[500],
+      backgroundColor: 'background.pink',
+      minHeight: 'max-content',
+  }}
+    >
+      
       <Box sx={{
-        display: 'flex',
+        //display: 'flex',
         flexDirection: 'column',
-        flex:1,
-        alignItems: 'left',
+        //flex:1,
+        //alignItems: 'left',
         //justifyContent: 'center',
         boxShadow: '0 2px 10px 0 rgb(0 0 0 / 20%)',
-        borderRadius: '5px',
-        maxWidth: '100%',
-        height: '100%',
+        borderRadius: '7px',
+        backgroundColor: 'background.paper',
+        width: '70%',
+        maxWidth: '500px',
+        minHeight: '95%',
+        marginTop: '3%',
+        overflow: 'overlay',
+        display:'inline-block',
+        
       }}>
-        <Header />
-        <Titulo>TITULO</Titulo>
+        
+         <Titulo/> 
+        <CheckboxLanguages/>
+        {/* Here i will make the checkBoxes*/}
+        {/* Here i will ask how many stickers*/}
+        {/* Then a textField for observations*/}
+        {/* change themes on the bottom.*/}
 
-        <Button color="secondary" variant="contained" onClick={changeTheme}>Change Themes</Button>
-        <Button variant="contained" onClick={handleClick}>Go to CheckOut</Button>
-        <main >
-          
-          <h1 >
-            Teste
-          </h1>
-          </main>
+        <Button color="primary" onClick={changeTheme}>Change Themes</Button>
+        <Button onClick={handleClick}>Go to CheckOut</Button>
+
       </Box>
+    </Box>
   )
 }
 
-function Titulo(props: { children: string}) {
+function Titulo() {
 
   const CustomizedTitleBox = styled(Box)`
     display: flex;
@@ -59,8 +82,12 @@ function Titulo(props: { children: string}) {
     height: 30%;
     width: 100%;
     background-color: #2e3676;
+    border-radius: 7px;
+    padding: 15px;
+    padding-top: 15px;
     clip-path: ellipse(72% 100% at 37.46% 0%);
     color: #FFFFFF;
+    margin-bottom: 25px;
 
   :hover {
     color: #2e8b57;
@@ -72,15 +99,24 @@ const StyledBox: React.FC = ({ children }) => {
 }
 
   return (
-  <>  <StyledBox>
-      <Typography variant="h6" gutterBottom component="div">
-       Formulário <br/>para compra de<br/> 
-      
-       <Typography variant="h6" fontWeight='bold' gutterBottom component="div">
-       Pacote de adesivos<br/>
+  <>  
+  <StyledBox>
+  <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
+    <Typography sx={{
+      fontSize: '1rem',
+    }} >
+       Formulário para compra de <b>Pacote de adesivos</b>
       </Typography>
-      </Typography>
-      </StyledBox>
+    <Box sx={{
+      opacity:'0.3',
+      paddingLeft: '25%',
+      minWidth: '100px',
+      }}>
+      <img src="/img_568435.png" alt="logo"  width="95px" height="auto"/>
+      {/* <Avatar variant="square" sx={{opacity:'0.5', width: 80, height: 80, position:'right'}}alt="delivery Box" src="/img_568435.png" />  */}
+    </Box>
+  </Box>
+  </StyledBox>
 
   </>
   )
@@ -91,14 +127,8 @@ function Header() {
       <>
           <Box sx={{ width: '100%', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} >
               <Typography variant='body2'>
-                  Metrics
+                  Bem Paggo
               </Typography>
-              <Button
-                  variant='outlined'
-                  label='Logout'
-                  href="/"
-              >Logout
-              </Button>
           </Box>
       </>
   )
