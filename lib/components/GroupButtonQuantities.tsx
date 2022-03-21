@@ -6,17 +6,28 @@ import { Typography } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import FormLabel from '@mui/material/FormLabel';
 
 export default function GroupButtonQuantities() {
   const [quantities, setQuantities] = React.useState(0);
 
+  const handleClick = (e: { preventDefault: () => void; }) => {
+    e.preventDefault()
+    if(e.target.name === 'add'){
+      setQuantities(quantities + 1);
+    }else{
+      if(quantities > 0){
+        setQuantities(quantities - 1);
+      }
+    }
+  }
+
+
   const buttons = [
-    <Button variant="contained" key="+" onClick={()=>setQuantities(quantities+1)}><AddIcon/></Button>,
+    <Button name="add" variant="contained" key="+" onClick={handleClick}><AddIcon/></Button>,
     <TextField sx={{
       width: '3rem',
     }} value={quantities}  key="textfieldQuantities"/>,
-    <Button variant="contained" key="-" onClick={()=>setQuantities(Math.abs(quantities-1))}><RemoveIcon/></Button>,
+    <Button name="remove" variant="contained" key="-" onClick={ handleClick}><RemoveIcon/></Button>,
   ];
 
 
@@ -24,12 +35,9 @@ export default function GroupButtonQuantities() {
     <Box
       sx={{
         display: 'flex',
-        padding: '2rem',
-      flexDirection: 'column',
-        /* alignItems: 'center', */ 
-        '& > *': {
-          m: 1,
-        },
+        paddingLeft: '2rem',
+        flexDirection: 'column',
+
       }}
     >
       <Typography>Quantos adesivos de cada?</Typography>

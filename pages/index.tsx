@@ -32,11 +32,11 @@ const Home: NextPage = () => {
       display: 'flex', 
       alignItems: 'center', 
       justifyContent: 'center',
-      height: '100vh',
+      height: 'auto',
       width: '100vw',
       //backgroundColor: appConfig.theme.colors.primary[500],
       backgroundColor: 'background.pink',
-      minHeight: 'max-content',
+      /* minHeight: 'min-content', */
   }}
     >
       
@@ -49,7 +49,7 @@ const Home: NextPage = () => {
         boxShadow: '0 2px 10px 0 rgb(0 0 0 / 20%)',
         borderRadius: '7px',
         backgroundColor: 'background.paper',
-        width: '70%',
+        width: '85%',
         maxWidth: '500px',
         minHeight: '95%',
         marginTop: '3%',
@@ -71,7 +71,6 @@ const Home: NextPage = () => {
           justifyContent: 'center',
           display: 'flex',
           flexDirection: 'column',
-          marginTop: '2rem',
           marginBottom: '2rem',
           marginLeft: '2rem',
           marginRight: '2rem',
@@ -82,10 +81,10 @@ const Home: NextPage = () => {
         }} multiline rows={4} variant="outlined" />
         </Box>
         {/* change themes on the bottom.*/}
-
-        <Button color="primary" onClick={changeTheme}>Change Themes</Button>
-        <Button onClick={handleClick}>Go to CheckOut</Button>
-
+        <Box sx={{ width: '100%', paddingBottom: '16px', display: 'flex', alignItems: 'center', backgroundColor: 'secondary.light', justifyContent: 'space-between' }} >
+        <Button variant="contained" size='small' sx={{marginLeft:'2rem'}}  onClick={changeTheme}>Change Themes</Button>
+        <Button variant="contained" size='small' sx={{marginRight:'2rem'}} onClick={handleClick}>Enviar</Button>
+        </Box>
       </Box>
     </Box>
   )
@@ -101,7 +100,8 @@ function Titulo() {
     background-color: #2e3676;
     border-radius: 7px;
     padding: 15px;
-    padding-top: 15px;
+    padding-top: 25px;
+    
     clip-path: ellipse(72% 100% at 37.46% 0%);
     color: #FFFFFF;
     margin-bottom: 25px;
@@ -121,6 +121,7 @@ const StyledBox: React.FC = ({ children }) => {
   <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
     <Typography sx={{
       fontSize: '1rem',
+      marginTop:' 20px',
     }} >
        Formulário para compra de <b>Pacote de adesivos</b>
       </Typography>

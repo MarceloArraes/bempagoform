@@ -2,7 +2,6 @@ import * as React from 'react';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import FormLabel from '@mui/material/FormLabel';
 import { Typography } from '@mui/material';
 
 
@@ -27,7 +26,7 @@ export default function CheckboxLanguages() {
 
   return (
     <FormGroup sx={{
-      padding: '2rem',
+      paddingLeft: '2rem',
     }}>
       <Typography>Quais adesivos?</Typography>
       <FormControlLabel control={<Checkbox name='react' checked={react} onChange={handleChange} />} label="React" />
