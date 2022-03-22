@@ -6,23 +6,19 @@ import { Typography } from '@mui/material';
 
 
 
-export default function CheckboxLanguages() {
-  const [state, setState] = React.useState({
-    react: false,
-    vue: false,
-    angular: false,
-  });
+export default function CheckboxLanguages(props: any ) {
+
 
   const handleChange = (event: { target: { name: any; checked: any; }; }) => {
-    setState({
-      ...state,
+    props.setState({
+      ...props.state,
       [event.target.name]: event.target.checked,
     });
     
   };
 
-  const { react, vue, angular } = state;
-  console.log(state);
+  const { react, vue, angular } = props.state;
+  console.log(props.state);
 
   return (
     <FormGroup sx={{

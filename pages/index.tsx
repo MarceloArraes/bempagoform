@@ -19,12 +19,29 @@ interface ITitulo {
 const Home: NextPage = () => {
   const router = useRouter();
   const { changeTheme } = useAppThemeContext();
+  const [state, setState] = React.useState({
+    react: false,
+    vue: false,
+    angular: false,
+  });
+  const [quantities, setQuantities] = React.useState(0);
 
   const handleClick = (e: { preventDefault: () => void; }) => {
     e.preventDefault()
-    router.push('/checkout');
-  }
 
+    let itens: string[] = [];
+    
+    Object.entries(state).forEach((item) => {
+      if (item[1]) {
+        itens.push(item[0]);
+      }
+    });
+
+   router.push({
+      pathname: '/checkout',
+      query: { itens: itens, quantities: quantities } as any,
+    }) 
+  }
 
   return (
     <Box
@@ -39,7 +56,6 @@ const Home: NextPage = () => {
       /* minHeight: 'min-content', */
   }}
     >
-      
       <Box sx={{
         //display: 'flex',
         flexDirection: 'column',
@@ -60,9 +76,9 @@ const Home: NextPage = () => {
         
          <Titulo/> 
          {/* Here i will make the checkBoxes*/}
-        <CheckboxLanguages/>
+        <CheckboxLanguages state={state} setState={setState} />
         {/* Here i will ask how many stickers*/}
-        <GroupButtonQuantities/>
+        <GroupButtonQuantities quantities={quantities} setQuantities={setQuantities}/>
         
         
         {/* Then a textField for observations*/}
@@ -82,8 +98,8 @@ const Home: NextPage = () => {
         </Box>
         {/* change themes on the bottom.*/}
         <Box sx={{ width: '100%', paddingBottom: '16px', display: 'flex', alignItems: 'center', backgroundColor: 'secondary.light', justifyContent: 'space-between' }} >
-        <Button variant="contained" size='small' sx={{marginLeft:'2rem'}}  onClick={changeTheme}>Change Themes</Button>
-        <Button variant="contained" size='small' sx={{marginRight:'2rem'}} onClick={handleClick}>Enviar</Button>
+        <Button data-cy="chg-btn" variant="contained" size='small' sx={{marginLeft:'2rem'}}  onClick={changeTheme}>Change Themes</Button>
+        <Button data-cy="snd-btn" variant="contained" size='small' sx={{marginRight:'2rem'}} onClick={handleClick}>Enviar</Button>
         </Box>
       </Box>
     </Box>
@@ -139,19 +155,6 @@ const StyledBox: React.FC = ({ children }) => {
   </>
   )
 }
-
-function Header() {
-  return (
-      <>
-          <Box sx={{ width: '100%', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} >
-              <Typography variant='body2'>
-                  Bem Paggo
-              </Typography>
-          </Box>
-      </>
-  )
-}
-
 
 
 export default Home

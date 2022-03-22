@@ -7,16 +7,15 @@ import TextField from '@mui/material/TextField';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 
-export default function GroupButtonQuantities() {
-  const [quantities, setQuantities] = React.useState(0);
+export default function GroupButtonQuantities(props:any) {
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     if(e.currentTarget.name === 'add'){
-      setQuantities(quantities + 1);
+      props.setQuantities(props.quantities + 1);
     }else{
-      if(quantities > 0){
-        setQuantities(quantities - 1);
+      if(props.quantities > 0){
+        props.setQuantities(props.quantities - 1);
       }
     }
   }
@@ -26,7 +25,7 @@ export default function GroupButtonQuantities() {
     <Button name="add" variant="contained" key="+" onClick={handleClick}><AddIcon/></Button>,
     <TextField sx={{
       width: '3rem',
-    }} value={quantities}  key="textfieldQuantities"/>,
+    }} value={props.quantities}  key="textfieldQuantities"/>,
     <Button name="remove" variant="contained" key="-" onClick={ handleClick}><RemoveIcon/></Button>,
   ];
 
