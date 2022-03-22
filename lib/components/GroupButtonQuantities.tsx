@@ -10,9 +10,9 @@ import RemoveIcon from '@mui/icons-material/Remove';
 export default function GroupButtonQuantities() {
   const [quantities, setQuantities] = React.useState(0);
 
-  const handleClick = (e: any) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
-    if(e.target.name === 'add'){
+    if(e.currentTarget.name === 'add'){
       setQuantities(quantities + 1);
     }else{
       if(quantities > 0){
