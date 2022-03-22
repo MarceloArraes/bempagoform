@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/system/Box';
 import CheckboxLanguages from '../lib/components/CheckBoxLanguages';
 import GroupButtonQuantities from '../lib/components/GroupButtonQuantities';
-
+import Image from 'next/image'
 interface ITitulo {
   children: string;
   tag: string;
@@ -130,7 +130,7 @@ const StyledBox: React.FC = ({ children }) => {
       paddingLeft: '25%',
       minWidth: '100px',
       }}>
-      <img src="/img_568435.png" alt="logo"  width="95px" height="auto"/>
+      <Image src="/img_568435.png" alt="logo"  layout='fixed' width={90} height={90} />
       {/* <Avatar variant="square" sx={{opacity:'0.5', width: 80, height: 80, position:'right'}}alt="delivery Box" src="/img_568435.png" />  */}
     </Box>
   </Box>
