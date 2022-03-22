@@ -16,7 +16,7 @@ const CheckOut: NextPage = () => {
   const router = useRouter();
   
   const {
-    query: { itens, quantities },
+    query: { itens, quantities, comentary },
   } = router
 
   if(typeof itens === 'string'){
@@ -73,6 +73,12 @@ const CheckOut: NextPage = () => {
             }}> Adesivos não selecionados. </Typography>
           }
 
+          <Typography sx={{
+              paddingLeft: '2rem',
+              fontSize: '1rem',
+              backgroundColor: 'secondary.light',
+            }}
+          >Observações do Pedido: {comentary}</Typography>
         </Box>
     </Box>
   )

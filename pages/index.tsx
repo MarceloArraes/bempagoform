@@ -11,6 +11,7 @@ import Box from '@mui/system/Box';
 import CheckboxLanguages from '../lib/components/CheckBoxLanguages';
 import GroupButtonQuantities from '../lib/components/GroupButtonQuantities';
 import Image from 'next/image'
+import { log } from 'console';
 interface ITitulo {
   children: string;
   tag: string;
@@ -25,6 +26,7 @@ const Home: NextPage = () => {
     angular: false,
   });
   const [quantities, setQuantities] = React.useState(0);
+  const [comentary, setComentary] = React.useState('');
 
   const handleClick = (e: { preventDefault: () => void; }) => {
     e.preventDefault()
@@ -39,8 +41,11 @@ const Home: NextPage = () => {
 
    router.push({
       pathname: '/checkout',
-      query: { itens: itens, quantities: quantities } as any,
+      query: { itens: itens, quantities: quantities, comentary: comentary } as any,
     }) 
+  }
+  const handleTextFieldComentary = (e: { target: { value: string; }; }) => {
+    setComentary(e.target.value);
   }
 
   return (
@@ -94,7 +99,7 @@ const Home: NextPage = () => {
         <Typography>Observações</Typography>
         <TextField sx={{
           backgroundColor: 'secondary.light',
-        }} multiline rows={4} variant="outlined" />
+        }} multiline rows={4} variant="outlined" onChange={handleTextFieldComentary}/>
         </Box>
         {/* change themes on the bottom.*/}
         <Box sx={{ width: '100%', paddingBottom: '16px', display: 'flex', alignItems: 'center', backgroundColor: 'secondary.light', justifyContent: 'space-between' }} >
